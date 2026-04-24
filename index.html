@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GMATH - Μαθηματικά με στυλ</title>
+    <meta name="description" content="Εκπαιδευτική πλατφόρμα με σημειώσεις, βίντεο και υλικό για Μαθηματικά και ΑΕΠΠ Γ' Λυκείου.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo italic">GMATH</a>
+            <ul class="nav-links">
+                <li><a href="#home">Αρχική</a></li>
+                <li><a href="#videos">Βίντεο</a></li>
+                <li><a href="#notes">Σημειώσεις</a></li>
+                <li><a href="#about">Σχετικά</a></li>
+                <li><a href="links.html">Σύνδεσμοι</a></li>
+                <li><a href="#contact">Επικοινωνία</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <div class="container hero-content">
+            <span class="badge">ΕΚΠΑΙΔΕΥΤΙΚΟ ΥΛΙΚΟ Γ' ΛΥΚΕΙΟΥ & ΓΥΜΝΑΣΙΟΥ</span>
+            <h1>GMATH</h1>
+            <p class="subtitle">Μαθηματικά με στυλ – σημειώσεις, βίντεο, μαθημαγικά</p>
+            <div class="hero-btns">
+                <a href="#notes" class="btn btn-primary">Δες το Υλικό <i class="fas fa-arrow-right"></i></a>
+                <a href="#videos" class="btn btn-secondary">Βίντεο Μαθημάτων</a>
+            </div>
+        </div>
+        <div class="math-symbol s1">∫</div>
+        <div class="math-symbol s2">Σ</div>
+    </header>
+
+    <!-- Videos Section -->
+    <section id="videos" class="section bg-light">
+        <div class="container text-center">
+            <h2 class="section-title italic">Εκπαιδευτικά Βίντεο</h2>
+            <p class="section-desc">Παρακολουθήστε αναλυτικά μαθήματα και λύσεις ασκήσεων.</p>
+            
+            <div class="tabs">
+                <button class="tab-btn active" data-target="math-vids">Μαθηματικά</button>
+                <button class="tab-btn" data-target="aepp-vids">ΑΕΠΠ Γ' Λυκείου</button>
+            </div>
+
+            <div id="math-vids" class="tab-content active transition-fade">
+                <div class="grid">
+                    <div class="video-card">
+                        <div class="video-thumb">
+                            <img src="https://images.unsplash.com/photo-1509228468518-180dd48229d2?w=500&q=80" alt="Math">
+                            <div class="play-overlay"><i class="fas fa-play"></i></div>
+                        </div>
+                        <h3>Εισαγωγή στη Γεωμετρία</h3>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumb">
+                            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=500&q=80" alt="Math">
+                            <div class="play-overlay"><i class="fas fa-play"></i></div>
+                        </div>
+                        <h3>Συναρτήσεις - Όρια</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div id="aepp-vids" class="tab-content transition-fade">
+                <div class="grid">
+                    <div class="video-card">
+                        <div class="video-thumb">
+                            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&q=80" alt="AEPP">
+                            <div class="play-overlay"><i class="fas fa-play"></i></div>
+                        </div>
+                        <h3>Διάρθρωση Αλγορίθμου</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notes Section -->
+    <section id="notes" class="section">
+        <div class="container text-center">
+            <h2 class="section-title italic">Οργανωμένες Σημειώσεις</h2>
+            <div class="grid-2">
+                <div class="card note-card math-card">
+                    <div class="icon-box purple-grad"><i class="fas fa-pen-nib"></i></div>
+                    <h3>Μαθηματικά</h3>
+                    <p>Θεωρία, μεθοδολογίες και λυμένες ασκήσεις για Γυμνάσιο και Λύκειο.</p>
+                    <a href="math.html" class="link">Δες σημειώσεις <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="card note-card aepp-card">
+                    <div class="icon-box purple-grad-dark"><i class="fas fa-terminal"></i></div>
+                    <h3>ΑΕΠΠ Γ' Λυκείου</h3>
+                    <p>Αλγοριθμική, Δομές Δεδομένων και προγραμματισμός σε ΓΛΩΣΣΑ.</p>
+                    <a href="aepp.html" class="link aepp-link">Δες σημειώσεις <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section bg-light">
+        <div class="container about-grid">
+            <div class="about-text">
+                <h2 class="section-title">Τι είναι το GMATH;</h2>
+                <div class="divider"></div>
+                <p>Το GMATH δημιουργήθηκε για να κάνει τα Μαθηματικά και τον Προγραμματισμό πιο προσιτά και οργανωμένα.</p>
+                <p>Ο δημιουργός είναι απόφοιτος Βιοστατιστικής με αγάπη για τη διδασκαλία και την τεχνολογία. Το υλικό είναι υποστηρικτικό και 100% δωρεάν.</p>
+                <div class="about-icons">
+                    <span><i class="fas fa-user-graduate"></i> Βιοστατιστική</span>
+                    <span><i class="fas fa-code"></i> Τεχνολογία</span>
+                    <span><i class="fas fa-heart"></i> Δωρεάν</span>
+                </div>
+            </div>
+            <div class="about-visual">
+                <div class="quote-box shadow">
+                    <p class="italic">"Η γνώση είναι δύναμη όταν μοιράζεται."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="contact-box shadow">
+                <div class="contact-info purple-grad">
+                    <h2>Επικοινωνία</h2>
+                    <p>Έχετε απορίες; Στείλτε το μήνυμά σας.</p>
+                    <div class="info-item"><i class="fas fa-envelope"></i> info@gmath.gr</div>
+                </div>
+                <div class="contact-form">
+                    <form id="gmath-form">
+                        <div class="form-row">
+                            <input type="text" placeholder="Όνομα" required>
+                            <input type="email" placeholder="Email" required>
+                        </div>
+                        <textarea placeholder="Μήνυμα" rows="5" required></textarea>
+                        <button type="submit" class="btn btn-primary">Αποστολή <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <h3>GMATH</h3>
+            <p>Μαθηματικά και Προγραμματισμός με στυλ και μεράκι.</p>
+            <p class="copyright">© 2026 GMATH. Μεράκι για τα μαθηματικά.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

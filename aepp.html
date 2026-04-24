@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Σημειώσεις ΑΕΠΠ - GMATH</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-paper">
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo italic">GMATH</a>
+            <a href="index.html" class="link"><i class="fas fa-arrow-left"></i> Επιστροφή</a>
+        </div>
+    </nav>
+
+    <main class="section pt-32">
+        <div class="container">
+            <div class="header-box text-center mb-12">
+                <h1 class="italic text-brand-dark-purple">ΑΕΠΠ Γ' Λυκείου</h1>
+                <p class="text-muted">Υλικό για το μάθημα "Ανάπτυξη Εφαρμογών σε Προγραμματιστικό Περιβάλλον".</p>
+            </div>
+
+            <div class="grid max-w-3xl mx-auto">
+                <div class="card p-8">
+                    <h2 class="mb-6 italic">Λίστα Αρχείων</h2>
+                    <ul class="file-list">
+                        <li>
+                            <div class="f-info">
+                                <i class="fas fa-terminal"></i>
+                                <span>Εισαγωγή στον Προγραμματισμό & Αλγόριθμοι</span>
+                            </div>
+                            <a href="#" class="dl-btn"><i class="fas fa-download"></i></a>
+                        </li>
+                        <li>
+                            <div class="f-info">
+                                <i class="fas fa-code-branch"></i>
+                                <span>Δομή Επιλογής & Σύνθετες Συνθήκες</span>
+                            </div>
+                            <a href="#" class="dl-btn"><i class="fas fa-download"></i></a>
+                        </li>
+                        <li>
+                            <div class="f-info">
+                                <i class="fas fa-redo"></i>
+                                <span>Επαναληπτικές Δομές (ΟΣΟ, ΓΙΑ, ΜΕΧΡΙΣ ΟΤΟΥ)</span>
+                            </div>
+                            <a href="#" class="dl-btn"><i class="fas fa-download"></i></a>
+                        </li>
+                        <li>
+                            <div class="f-info">
+                                <i class="fas fa-table"></i>
+                                <span>Πίνακες: Μονοδιάστατοι & Δισδιάστατοι</span>
+                            </div>
+                            <a href="#" class="dl-btn"><i class="fas fa-download"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <style>
+        .pt-32 { padding-top: 120px; }
+        .text-brand-dark-purple { color: var(--brand-purple-dark); }
+        .file-list { list-style: none; }
+        .file-list li { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            padding: 15px; 
+            background: #f8fafc; 
+            border-radius: 12px;
+            margin-bottom: 12px;
+            transition: 0.3s;
+        }
+        .file-list li:hover { background: #f1f5f9; }
+        .f-info { display: flex; gap: 15px; align-items: center; font-weight: 500; font-size: 15px; }
+        .f-info i { color: var(--brand-purple-dark); }
+        .dl-btn { color: var(--brand-purple); font-size: 18px; }
+    </style>
+</body>
+</html>
