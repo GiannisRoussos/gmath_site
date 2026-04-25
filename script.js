@@ -38,22 +38,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Form Handling (Simulation)
+    // Form Handling (Mailto Implementation)
     const contactForm = document.getElementById('gmath-form');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
+            
+            const name = contactForm.querySelector('input[type="text"]').value;
+            const email = contactForm.querySelector('input[type="email"]').value;
+            const message = contactForm.querySelector('textarea').value;
+            
+            const subject = encodeURIComponent(`Μήνυμα από GMATH - ${name}`);
+            const body = encodeURIComponent(`Όνομα: ${name}\nEmail: ${email}\n\nΜήνυμα:\n${message}`);
+            
+            // Open user's email client
+            window.location.href = `mailto:roussos_giannis@hotmail.com?subject=${subject}&body=${body}`;
+            
+            // Visual feedback
             const btn = contactForm.querySelector('button');
             const originalText = btn.innerHTML;
-            
-            btn.innerHTML = 'Στάλθηκε! <i class="fas fa-check"></i>';
+            btn.innerHTML = 'Ανοίγει το email... <i class="fas fa-envelope-open"></i>';
             btn.style.background = '#10b981';
-            
-            contactForm.reset();
             
             setTimeout(() => {
                 btn.innerHTML = originalText;
                 btn.style.background = '';
+                contactForm.reset();
             }, 3000);
         });
     }
