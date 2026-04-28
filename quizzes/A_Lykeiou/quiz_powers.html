@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GMATH — Quiz Δυνάμεις Α' Λυκείου</title>
-    <link rel="stylesheet" href="style.css" />
+    <!-- Εδώ μπήκαν τα δύο ../ -->
+    <link rel="stylesheet" href="../../style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
@@ -34,37 +35,31 @@
 <body>
     <nav class="navbar">
         <div class="container flex justify-between items-center h-full">
-            <a href="index.html" class="logo italic">GMATH</a>
+            <!-- Εδώ μπήκαν τα δύο ../ στα links -->
+            <a href="../../index.html" class="logo italic">GMATH</a>
             <div class="nav-links">
-                <a href="index.html">Αρχική</a>
-                <a href="math.html" class="active">Μαθηματικά</a>
-                <a href="aepp.html">ΑΕΠΠ</a>
-                <a href="links.html">Σύνδεσμοι</a>
+                <a href="../../index.html">Αρχική</a>
+                <a href="../../math.html" class="active">Μαθηματικά</a>
+                <a href="../../aepp.html">ΑΕΠΠ</a>
+                <a href="../../links.html">Σύνδεσμοι</a>
             </div>
         </div>
     </nav>
 
     <div class="quiz-container">
-        <a href="math.html" class="back-btn"><i class="fas fa-arrow-left"></i> Επιστροφή στις Σημειώσεις</a>
+        <!-- Εδώ μπήκαν τα δύο ../ -->
+        <a href="../../math.html" class="back-btn"><i class="fas fa-arrow-left"></i> Επιστροφή στις Σημειώσεις</a>
         
         <div class="quiz-card" id="quiz-card">
             <div class="quiz-progress" id="progress-bar" style="width: 0%"></div>
             
             <div id="question-screen">
                 <span class="question-meta">Ερώτηση <span id="current-idx">1</span> από <span id="total-questions">6</span></span>
-                <div class="question-text" id="question-text">
-                    Φορτώνεται ερώτηση...
-                </div>
+                <div class="question-text" id="question-text">Φορτώνεται ερώτηση...</div>
                 
                 <div class="quiz-options">
-                    <button onclick="checkAnswer(true)" class="quiz-option-btn" id="btn-true">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Σωστό</span>
-                    </button>
-                    <button onclick="checkAnswer(false)" class="quiz-option-btn" id="btn-false">
-                        <i class="fas fa-times-circle"></i>
-                        <span>Λάθος</span>
-                    </button>
+                    <button onclick="checkAnswer(true)" class="quiz-option-btn" id="btn-true"><i class="fas fa-check-circle"></i><span>Σωστό</span></button>
+                    <button onclick="checkAnswer(false)" class="quiz-option-btn" id="btn-false"><i class="fas fa-times-circle"></i><span>Λάθος</span></button>
                 </div>
 
                 <div id="feedback" class="feedback-area"></div>
@@ -78,16 +73,15 @@
                 <div class="result-score"><span id="score-val">0</span>/<span id="result-total">6</span></div>
                 <button onclick="location.reload()" class="next-quiz-btn" style="display: inline-block;">Προσπάθεια Ξανά</button>
                 <div class="mt-8">
-                    <a href="math.html" class="contact-link" style="color: var(--brand-purple);">Επιστροφή στα Μαθηματικά</a>
+                    <!-- Εδώ μπήκαν τα δύο ../ -->
+                    <a href="../../math.html" class="contact-link" style="color: var(--brand-purple);">Επιστροφή στα Μαθηματικά</a>
                 </div>
             </div>
         </div>
     </div>
 
     <footer class="footer">
-        <div class="container text-center">
-            <p>&copy; 2025 GMATH. Μεράκι για τα μαθηματικά.</p>
-        </div>
+        <div class="container text-center"><p>&copy; 2025 GMATH. Μεράκι για τα μαθηματικά.</p></div>
     </footer>
 
     <script>
@@ -100,85 +94,47 @@
             { text: "\\( -2^3 \\cdot (-2)^5 = 2^8 \\)", correct: true, explanation: "\\( -2^3 \\cdot (-2)^5 = -2^3 \\cdot (-2^5) = 2^{3+5} = 2^8 \\)." }
         ];
 
-        let currentQuestion = 0;
-        let score = 0;
-        let answered = false;
+        let currentQuestion = 0; let score = 0; let answered = false;
 
-        const correctSound = new Audio('correct.mp3');
-        const wrongSound = new Audio('wrong.mp3');
-        
-        correctSound.volume = 0.4;
-        wrongSound.volume = 0.3;
+        const correctSound = new Audio('https://assets.mixkit.co/active_storage/sfx/951/951-preview.mp3');
+        const wrongSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2003/2003-preview.mp3');
+        correctSound.volume = 0.4; wrongSound.volume = 0.3;
 
         function loadQuestion() {
-            answered = false;
-            document.getElementById("feedback").textContent = "";
-            document.getElementById("feedback").className = "feedback-area";
-            document.getElementById("next-btn").style.display = "none";
-            document.getElementById("current-idx").textContent = currentQuestion + 1;
-            document.getElementById("total-questions").textContent = questions.length;
-            document.getElementById("question-text").innerHTML = questions[currentQuestion].text;
-            
-            const btns = document.querySelectorAll('.quiz-option-btn');
-            btns.forEach(btn => {
-                btn.className = 'quiz-option-btn';
-                btn.disabled = false;
-            });
-
-            const prog = ((currentQuestion) / questions.length) * 100;
-            document.getElementById("progress-bar").style.width = prog + "%";
-
-            if (window.MathJax) {
-                MathJax.typesetPromise();
-            }
+            answered = false; document.getElementById("feedback").textContent = ""; document.getElementById("feedback").className = "feedback-area";
+            document.getElementById("next-btn").style.display = "none"; document.getElementById("current-idx").textContent = currentQuestion + 1;
+            document.getElementById("total-questions").textContent = questions.length; document.getElementById("question-text").innerHTML = questions[currentQuestion].text;
+            const btns = document.querySelectorAll('.quiz-option-btn'); btns.forEach(btn => { btn.className = 'quiz-option-btn'; btn.disabled = false; });
+            const prog = ((currentQuestion) / questions.length) * 100; document.getElementById("progress-bar").style.width = prog + "%";
+            if (window.MathJax) { MathJax.typesetPromise(); }
         }
 
         function checkAnswer(userAnswer) {
-            if (answered) return;
-            answered = true;
-
-            const correct = questions[currentQuestion].correct === userAnswer;
-            const feedbackEl = document.getElementById("feedback");
-            const nextBtn = document.getElementById("next-btn");
-            
-            const btns = document.querySelectorAll('.quiz-option-btn');
-            btns.forEach(btn => btn.disabled = true);
+            if (answered) return; answered = true; const correct = questions[currentQuestion].correct === userAnswer;
+            const feedbackEl = document.getElementById("feedback"); const nextBtn = document.getElementById("next-btn");
+            const btns = document.querySelectorAll('.quiz-option-btn'); btns.forEach(btn => btn.disabled = true);
 
             if (correct) {
-                score++;
-                correctSound.play().catch(e => console.log("Audio play failed:", e));
-                feedbackEl.textContent = "✅ Σωστά!";
-                feedbackEl.className = "feedback-area correct";
+                score++; correctSound.play().catch(e => console.log("Audio play failed:", e));
+                feedbackEl.textContent = "✅ Σωστά!"; feedbackEl.className = "feedback-area correct";
                 document.getElementById(userAnswer ? 'btn-true' : 'btn-false').classList.add('correct');
             } else {
                 wrongSound.play().catch(e => console.log("Audio play failed:", e));
-                feedbackEl.textContent = "❌ Λάθος! " + (questions[currentQuestion].explanation || "");
-                feedbackEl.className = "feedback-area wrong";
+                feedbackEl.textContent = "❌ Λάθος! " + (questions[currentQuestion].explanation || ""); feedbackEl.className = "feedback-area wrong";
                 document.getElementById(userAnswer ? 'btn-true' : 'btn-false').classList.add('wrong');
                 document.getElementById(!userAnswer ? 'btn-true' : 'btn-false').classList.add('correct');
             }
-
             nextBtn.style.display = "inline-block";
-            
-            if (currentQuestion === questions.length - 1) {
-                nextBtn.innerHTML = "Δείτε το Αποτέλεσμα <i class='fas fa-chart-bar ml-2'></i>";
-            }
+            if (currentQuestion === questions.length - 1) { nextBtn.innerHTML = "Δείτε το Αποτέλεσμα <i class='fas fa-chart-bar ml-2'></i>"; }
         }
 
         function nextQuestion() {
-            currentQuestion++;
-            if (currentQuestion < questions.length) {
-                loadQuestion();
-            } else {
-                showResult();
-            }
+            currentQuestion++; if (currentQuestion < questions.length) { loadQuestion(); } else { showResult(); }
         }
 
         function showResult() {
-            document.getElementById("question-screen").style.display = "none";
-            document.getElementById("result-screen").style.display = "block";
-            document.getElementById("score-val").textContent = score;
-            document.getElementById("result-total").textContent = questions.length;
+            document.getElementById("question-screen").style.display = "none"; document.getElementById("result-screen").style.display = "block";
+            document.getElementById("score-val").textContent = score; document.getElementById("result-total").textContent = questions.length;
             document.getElementById("progress-bar").style.width = "100%";
         }
 
