@@ -1,30 +1,335 @@
-<ul class="file-list">
-    <li style="flex-direction: column; align-items: flex-start; gap: 10px;">
-        <div style="width: 100%; display: flex; justify-content: space-between;">
-            <span class="chapter">2.1. Οι Πράξεις και οι Ιδιότητές τους</span> 
-            <a href="pdfs/algebra/A_Lykeiou/2_1_praxeis.pdf" target="_blank" class="dl-btn" title="Κατέβασμα PDF"><i class="fas fa-download"></i></a>
-        </div>
-        <a href="quizzes/A_Lykeiou/quiz_powers.html" style="background: #10b981; color: white; padding: 5px 12px; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: bold; transition: 0.3s;"><i class="fas fa-gamepad"></i> Παίξε το Quiz (Δυνάμεις)</a>
-    </li>
-    
-    <li style="flex-direction: column; align-items: flex-start; gap: 10px;">
-        <div style="width: 100%; display: flex; justify-content: space-between;">
-            <span class="chapter">2.2. Διάταξη Πραγματικών Αριθμών</span> 
-            <a href="pdfs/algebra/A_Lykeiou/2_2_diataxi.pdf" target="_blank" class="dl-btn" title="Κατέβασμα PDF"><i class="fas fa-download"></i></a>
-        </div>
-        <a href="quizzes/A_Lykeiou/quiz_2_2.html" style="background: #10b981; color: white; padding: 5px 12px; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: bold; transition: 0.3s;"><i class="fas fa-gamepad"></i> Παίξε το Quiz</a>
-    </li>
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Σημειώσεις Μαθηματικών - GMATH</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-paper">
 
-    <li style="flex-direction: column; align-items: flex-start; gap: 10px;">
-        <div style="width: 100%; display: flex; justify-content: space-between;">
-            <span class="chapter">2.3. Απόλυτη Τιμή Πραγματικού Αριθμού</span> 
-            <a href="#" class="dl-btn" title="Σύντομα διαθέσιμο"><i class="fas fa-download"></i></a>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo italic">GMATH</a>
+            <a href="index.html" class="link"><i class="fas fa-arrow-left"></i> Επιστροφή</a>
         </div>
-        <a href="quizzes/A_Lykeiou/quiz_apolyta.html" style="background: #10b981; color: white; padding: 5px 12px; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: bold; transition: 0.3s;"><i class="fas fa-gamepad"></i> Παίξε το Quiz (Απόλυτα)</a>
-    </li>
+    </nav>
 
-    <li><span class="chapter">3. Εξισώσεις</span> <a href="pdfs/algebra/A_Lykeiou/exisoseis.pdf" target="_blank" class="dl-btn"><i class="fas fa-download"></i></a></li>
-    <li><span class="chapter">4. Ανισώσεις</span> <a href="pdfs/algebra/A_Lykeiou/anisoseis.pdf" target="_blank" class="dl-btn"><i class="fas fa-download"></i></a></li>
-    <li><span class="chapter">5. Πρόοδοι</span> <a href="pdfs/algebra/A_Lykeiou/proodoi.pdf" target="_blank" class="dl-btn"><i class="fas fa-download"></i></a></li>
-    <li><span class="chapter">6.1. Η Έννοια της Συνάρτησης</span> <a href="pdfs/algebra/A_Lykeiou/ennoia_synartysis.pdf" target="_blank" class="dl-btn"><i class="fas fa-download"></i></a></li>
-</ul>
+    <main class="section pt-32">
+        <div class="container">
+            <div class="header-box text-center mb-12">
+                <h1 class="italic">Σημειώσεις Μαθηματικών</h1>
+                <p class="text-muted">Επιλέξτε τάξη και κεφάλαιο για να κατεβάσετε το αντίστοιχο υλικό.</p>
+            </div>
+
+            <div class="category mb-16">
+                <h2 class="cat-title mb-8 italic text-brand-purple">Λύκειο</h2>
+                <div class="class-accordion-container">
+                    
+                    <div class="class-item card p-0 mb-4">
+                        <button class="class-toggle" onclick="toggleAccordion(this)">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-graduation-cap text-brand-purple"></i>
+                                <span class="font-serif italic font-bold text-xl">Α' Λυκείου</span>
+                            </div>
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <div class="class-content">
+                            <div class="subject-accordion">
+                                <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                                    <span>Άλγεβρα</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="accordion-content">
+                                    <ul class="file-list">
+                                        <li style="flex-direction: column; align-items: flex-start; gap: 10px;">
+                                            <div style="width: 100%; display: flex; justify-content: space-between;">
+                                                <span class="chapter">2.1. Οι Πράξεις και οι Ιδιότητές τους</span> 
+                                                <a href="pdfs/algebra/A_Lykeiou/2_1_praxeis.pdf" target="_blank" class="dl-btn" title="Κατέβασμα PDF"><i class="fas fa-download"></i></a>
+                                            </div>
+                                            <a href="quizzes/A_Lykeiou/quiz_powers.html" style="background: #10b981; color: white; padding: 5px 12px; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: bold; transition: 0.3s;"><i class="fas fa-gamepad"></i> Παίξε το Quiz (Δυνάμεις)</a>
+                                        </li>
+                                        
+                                        <li style="flex-direction: column; align-items: flex-start; gap: 10px;">
+                                            <div style="width: 100%; display: flex; justify-content: space-between;">
+                                                <span class="chapter">2.2. Διάταξη Πραγματικών Αριθμών</span> 
+                                                <a href="pdfs/algebra/A_Lykeiou/2_2_diataxi.pdf" target="_blank" class="dl-btn" title="Κατέβασμα PDF"><i class="fas fa-download"></i></a>
+                                            </div>
+                                            <a href="quizzes/A_Lykeiou/quiz_2_2.html" style="background: #10b981; color: white; padding: 5px 12px; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: bold; transition: 0.3s;"><i class="fas fa-gamepad"></i> Παίξε το Quiz</a>
+                                        </li>
+
+                                        <li style="flex-direction: column; align-items: flex-start; gap: 10px;">
+                                            <div style="width: 100%; display: flex; justify-content: space-between;">
+                                                <span class="chapter">2.3. Απόλυτη Τιμή Πραγματικού Αριθμού</span> 
+                                                <a href="#" class="dl-btn" title="Σύντομα διαθέσιμο"><i class="fas fa-download"></i></a>
+                                            </div>
+                                            <a href="quizzes/A_Lykeiou/quiz_apolyta.html" style="background: #10b981; color: white; padding: 5px 12px; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: bold; transition: 0.3s;"><i class="fas fa-gamepad"></i> Παίξε το Quiz (Απόλυτα)</a>
+                                        </li>
+                                        
+                                        <li>
+                                            <span class="chapter">3. Εξισώσεις</span> 
+                                            <a href="pdfs/algebra/A_Lykeiou/exisoseis.pdf" target="_blank" class="dl-btn" title="Κατέβασμα PDF"><i class="fas fa-download"></i></a>
+                                        </li>
+                                        
+                                        <li>
+                                            <span class="chapter">4. Ανισώσεις</span> 
+                                            <a href="pdfs/algebra/A_Lykeiou/anisoseis.pdf" target="_blank" class="dl-btn" title="Κατέβασμα PDF"><i class="fas fa-download"></i></a>
+                                        </li>
+
+                                        <li>
+                                            <span class="chapter">5. Πρόοδοι</span> 
+                                            <a href="pdfs/algebra/A_Lykeiou/proodoi.pdf" target="_blank" class="dl-btn" title="Κατέβασμα PDF"><i class="fas fa-download"></i></a>
+                                        </li>
+
+                                        <li>
+                                            <span class="chapter">6.1. Η Έννοια της Συνάρτησης</span> 
+                                            <a href="pdfs/algebra/A_Lykeiou/ennoia_synartysis.pdf" target="_blank" class="dl-btn" title="Κατέβασμα PDF"><i class="fas fa-download"></i></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="subject-accordion">
+                                <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                                    <span>Γεωμετρία</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="accordion-content">
+                                    <ul class="file-list">
+                                        <li><span class="chapter">1. Τρίγωνα</span> <a href="#" class="dl-btn"><i class="fas fa-download"></i></a></li>
+                                        <li><span class="chapter">2. Παράλληλες Ευθείες</span> <a href="#" class="dl-btn"><i class="fas fa-download"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="class-item card p-0 mb-4">
+                        <button class="class-toggle" onclick="toggleAccordion(this)">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-graduation-cap text-brand-purple"></i>
+                                <span class="font-serif italic font-bold text-xl">Β' Λυκείου</span>
+                            </div>
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <div class="class-content">
+                            <div class="subject-accordion">
+                                <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                                    <span>Άλγεβρα</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="accordion-content">
+                                    <ul class="file-list">
+                                        <li><span class="chapter">1. Συστήματα</span> <a href="#" class="dl-btn"><i class="fas fa-download"></i></a></li>
+                                        <li><span class="chapter">2. Ιδιότητες Συναρτήσεων</span> <a href="#" class="dl-btn"><i class="fas fa-download"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="subject-accordion">
+                                <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                                    <span>Προσανατολισμού</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="accordion-content">
+                                    <ul class="file-list">
+                                        <li><span class="chapter">1. Διανύσματα</span> <a href="#" class="dl-btn"><i class="fas fa-download"></i></a></li>
+                                        <li><span class="chapter">2. Η Ευθεία στο Επίπεδο</span> <a href="#" class="dl-btn"><i class="fas fa-download"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="class-item card p-0 mb-4">
+                        <button class="class-toggle" onclick="toggleAccordion(this)">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-graduation-cap text-brand-purple"></i>
+                                <span class="font-serif italic font-bold text-xl">Γ' Λυκείου</span>
+                            </div>
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <div class="class-content">
+                            <div class="subject-accordion">
+                                <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                                    <span>Προσανατολισμού</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="accordion-content">
+                                    <ul class="file-list">
+                                        <li><span class="chapter">1. Όρια - Συνέχεια</span> <a href="#" class="dl-btn"><i class="fas fa-download"></i></a></li>
+                                        <li><span class="chapter">2. Διαφορικός Λογισμός</span> <a href="#" class="dl-btn"><i class="fas fa-download"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="subject-accordion">
+                                <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                                    <span>Γενικής Παιδείας</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="accordion-content">
+                                    <ul class="file-list">
+                                        <li><span class="chapter">1. Στατιστική</span> <a href="#" class="dl-btn"><i class="fas fa-download"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category mb-16">
+                <h2 class="cat-title mb-8 italic text-brand-purple">Γυμνάσιο</h2>
+                <div class="class-accordion-container">
+                    
+                    <div class="class-item card p-0 mb-4">
+                        <button class="class-toggle" onclick="toggleAccordion(this)">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-book text-brand-purple"></i>
+                                <span class="font-serif italic font-bold text-xl">Α' Γυμνασίου</span>
+                            </div>
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <div class="class-content">
+                            <div class="subject-accordion">
+                                <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                                    <span>Άλγεβρα</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="accordion-content">
+                                    <ul class="file-list">
+                                        <li><span class="chapter">1. Φυσικοί Αριθμοί</span> <a href="#" class="dl-btn"><i class="fas fa-download"></i></a></li>
+                                        <li><span class="chapter">2. Κλάσματα</span> <a href="#" class="dl-btn"><i class="fas fa-download"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="subject-accordion">
+                                <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                                    <span>Γεωμετρία</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="accordion-content">
+                                    <ul class="file-list">
+                                        <li><span class="chapter">1. Βασικές Έννοιες</span> <a href="#" class="dl-btn"><i class="fas fa-download"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="class-item card p-0 mb-4">
+                        <button class="class-toggle" onclick="toggleAccordion(this)">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-book text-brand-purple"></i>
+                                <span class="font-serif italic font-bold text-xl">Β' Γυμνασίου</span>
+                            </div>
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <div class="class-content">
+                            <div class="subject-accordion">
+                                <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                                    <span>Άλγεβρα</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="accordion-content">
+                                    <ul class="file-list">
+                                        <li><span class="chapter">1. Εξισώσεις / Ανισώσεις</span> <a href="#" class="dl-btn"><i class="fas fa-download"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="subject-accordion">
+                                <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                                    <span>Γεωμετρία</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="accordion-content">
+                                    <ul class="file-list">
+                                        <li><span class="chapter">1. Εμβαδά Επιπέδων Σχημάτων</span> <a href="#" class="dl-btn"><i class="fas fa-download"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="class-item card p-0 mb-4">
+                        <button class="class-toggle" onclick="toggleAccordion(this)">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-book text-brand-purple"></i>
+                                <span class="font-serif italic font-bold text-xl">Γ' Γυμνασίου</span>
+                            </div>
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <div class="class-content">
+                            <div class="subject-accordion">
+                                <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                                    <span>Άλγεβρα</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="accordion-content">
+                                    <ul class="file-list">
+                                        <li><span class="chapter">1. Αλγεβρικές Παραστάσεις</span> <a href="#" class="dl-btn"><i class="fas fa-download"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="subject-accordion">
+                                <button class="accordion-toggle" onclick="toggleAccordion(this)">
+                                    <span>Γεωμετρία</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="accordion-content">
+                                    <ul class="file-list">
+                                        <li><span class="chapter">1. Ομοιότητα Σχημάτων</span> <a href="#" class="dl-btn"><i class="fas fa-download"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <style>
+        .pt-32 { padding-top: 120px; }
+        .cat-title { font-size: 32px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; }
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-3 { gap: 0.75rem; }
+        .p-0 { padding: 0 !important; }
+
+        .class-item { overflow: hidden; border: 1px solid var(--border-color); transition: all 0.3s; }
+        .class-toggle { width: 100%; padding: 24px 30px; background: white; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: background 0.3s; }
+        .class-toggle:hover { background: #fdfcff; }
+        .class-toggle i.fa-plus { font-size: 14px; color: var(--brand-purple); transition: transform 0.3s; }
+        .class-toggle.active { background: rgba(139, 92, 246, 0.02); border-bottom: 1px solid var(--border-color); }
+        .class-toggle.active i.fa-plus { transform: rotate(45deg); }
+        .class-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; padding: 0 30px; }
+        .class-toggle.active + .class-content { max-height: 1000px; padding: 25px 30px; }
+
+        .subject-accordion { margin-bottom: 12px; }
+        .accordion-toggle { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; background: #f8fafc; border: 1px solid #f1f5f9; border-radius: 12px; cursor: pointer; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); transition: all 0.3s; }
+        .accordion-toggle:hover { border-color: var(--brand-purple-light); color: var(--brand-purple); }
+        .accordion-toggle.active { background: #ffffff; color: var(--brand-purple); border-color: var(--brand-purple); border-radius: 12px 12px 0 0; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.05); }
+        .accordion-toggle i { font-size: 10px; transition: transform 0.3s; }
+        .accordion-toggle.active i { transform: rotate(180deg); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: #ffffff; border-left: 1px solid var(--brand-purple); border-right: 1px solid var(--brand-purple); border-bottom: 1px solid var(--brand-purple); border-radius: 0 0 12px 12px; }
+        .accordion-toggle.active + .accordion-content { padding: 15px; max-height: 500px; }
+
+        .file-list { list-style: none; }
+        .file-list li { display: flex; justify-content: space-between; padding: 10px 14px; background: #fdfcff; border-radius: 8px; margin-bottom: 8px; font-size: 13px; font-weight: 500; transition: 0.2s; border: 1px solid #f1f5f9; }
+        .file-list li:hover { border-color: var(--brand-purple-light); background: #f5f3ff; }
+        .chapter { color: var(--text-ink); }
+        .dl-btn { color: var(--brand-purple); transition: 0.3s; padding-left: 10px; }
+        .dl-btn:hover { color: var(--brand-purple-dark); transform: scale(1.1); }
+        .text-brand-purple { color: var(--brand-purple); }
+    </style>
+
+    <script>
+        function toggleAccordion(btn) {
+            btn.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
