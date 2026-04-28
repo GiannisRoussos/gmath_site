@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GMATH — Quiz Απόλυτες Τιμές Α' Λυκείου</title>
-    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../../style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
@@ -34,18 +34,18 @@
 <body>
     <nav class="navbar">
         <div class="container flex justify-between items-center h-full">
-            <a href="../index.html" class="logo italic">GMATH</a>
+            <a href="../../index.html" class="logo italic">GMATH</a>
             <div class="nav-links">
-                <a href="../index.html">Αρχική</a>
-                <a href="../math.html" class="active">Μαθηματικά</a>
-                <a href="../aepp.html">ΑΕΠΠ</a>
-                <a href="../links.html">Σύνδεσμοι</a>
+                <a href="../../index.html">Αρχική</a>
+                <a href="../../math.html" class="active">Μαθηματικά</a>
+                <a href="../../aepp.html">ΑΕΠΠ</a>
+                <a href="../../links.html">Σύνδεσμοι</a>
             </div>
         </div>
     </nav>
 
     <div class="quiz-container">
-        <a href="../math.html" class="back-btn"><i class="fas fa-arrow-left"></i> Επιστροφή στις Σημειώσεις</a>
+        <a href="../../math.html" class="back-btn"><i class="fas fa-arrow-left"></i> Επιστροφή στις Σημειώσεις</a>
         
         <div class="quiz-card" id="quiz-card">
             <div class="quiz-progress" id="progress-bar" style="width: 0%"></div>
@@ -70,7 +70,7 @@
                 <div class="result-score"><span id="score-val">0</span>/<span id="result-total">5</span></div>
                 <button onclick="location.reload()" class="next-quiz-btn" style="display: inline-block;">Προσπάθεια Ξανά</button>
                 <div class="mt-8">
-                    <a href="../math.html" class="contact-link" style="color: var(--brand-purple);">Επιστροφή στα Μαθηματικά</a>
+                    <a href="../../math.html" class="contact-link" style="color: var(--brand-purple);">Επιστροφή στα Μαθηματικά</a>
                 </div>
             </div>
         </div>
@@ -84,7 +84,7 @@
         const questions = [
             { text: "Για κάθε πραγματικό αριθμό α, ισχύει: \\( \\left|α\\right| > 0 \\)", correct: false, explanation: "Αν \\( α = 0 \\), τότε \\( |0| = 0 \\), οπότε ισχύει \\( |α| \\ge 0 \\)." },
             { text: "Ισχύει ότι: \\( \\left|α-β\\right| =  \\left|β-α\\right|\\)", correct: true, explanation: "Οι αντίθετοι αριθμοί έχουν την ίδια απόλυτη τιμή." },
-            { text: "Ισχύει ότι: \\( \\left| \\alpha \\right|^3 = \\alpha^3 \\)", correct: false, explanation: "Αν το \\( α \\) είναι αρνητικό (π.χ. -2), το \\( |-2|^3 = 8 \\), ενώ το \\( (-2)^3 = -8 \\)." },
+            { text: "Ισχύει ότι: \\( \\left| \\ alpha \\right|^3 = \\alpha^3 \\)", correct: false, explanation: "Αν το \\( α \\) είναι αρνητικό (π.χ. -2), το \\( |-2|^3 = 8 \\), ενώ το \\( (-2)^3 = -8 \\)." },
             { text: "Ισχύει ότι: \\( \\left| \\alpha \\right|^2 - \\alpha^2 =0\\)", correct: true, explanation: "Για κάθε \\( α \\) ισχύει πάντα \\( |α|^2 = α^2 \\)." },
             { text: "\\( \\left| \\alpha - \\beta \\right| \\le \\left| \\alpha \\right| + \\left| \\beta \\right| \\)", correct: true, explanation: "Είναι γνωστή εφαρμογή της τριγωνικής ανισότητας." }
         ];
