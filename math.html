@@ -298,41 +298,7 @@
         </div>
     </main>
 
-    <style>
-        .pt-32 { padding-top: 120px; }
-        .cat-title { font-size: 32px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; }
-        .flex { display: flex; }
-        .flex-col { flex-direction: column; }
-        .items-center { align-items: center; }
-        .gap-3 { gap: 0.75rem; }
-        .p-0 { padding: 0 !important; }
-
-        .class-item { overflow: hidden; border: 1px solid var(--border-color); transition: all 0.3s; }
-        .class-toggle { width: 100%; padding: 24px 30px; background: white; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: background 0.3s; }
-        .class-toggle:hover { background: #fdfcff; }
-        .class-toggle i.fa-plus { font-size: 14px; color: var(--brand-purple); transition: transform 0.3s; }
-        .class-toggle.active { background: rgba(139, 92, 246, 0.02); border-bottom: 1px solid var(--border-color); }
-        .class-toggle.active i.fa-plus { transform: rotate(45deg); }
-        .class-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; padding: 0 30px; }
-        .class-toggle.active + .class-content { max-height: 1000px; padding: 25px 30px; }
-
-        .subject-accordion { margin-bottom: 12px; }
-        .accordion-toggle { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; background: #f8fafc; border: 1px solid #f1f5f9; border-radius: 12px; cursor: pointer; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); transition: all 0.3s; }
-        .accordion-toggle:hover { border-color: var(--brand-purple-light); color: var(--brand-purple); }
-        .accordion-toggle.active { background: #ffffff; color: var(--brand-purple); border-color: var(--brand-purple); border-radius: 12px 12px 0 0; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.05); }
-        .accordion-toggle i { font-size: 10px; transition: transform 0.3s; }
-        .accordion-toggle.active i { transform: rotate(180deg); }
-        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: #ffffff; border-left: 1px solid var(--brand-purple); border-right: 1px solid var(--brand-purple); border-bottom: 1px solid var(--brand-purple); border-radius: 0 0 12px 12px; }
-        .accordion-toggle.active + .accordion-content { padding: 15px; max-height: 500px; }
-
-        .file-list { list-style: none; }
-        .file-list li { display: flex; justify-content: space-between; padding: 10px 14px; background: #fdfcff; border-radius: 8px; margin-bottom: 8px; font-size: 13px; font-weight: 500; transition: 0.2s; border: 1px solid #f1f5f9; }
-        .file-list li:hover { border-color: var(--brand-purple-light); background: #f5f3ff; }
-        .chapter { color: var(--text-ink); }
-        .dl-btn { color: var(--brand-purple); transition: 0.3s; padding-left: 10px; }
-        .dl-btn:hover { color: var(--brand-purple-dark); transform: scale(1.1); }
-        .text-brand-purple { color: var(--brand-purple); }
-    </style>
+    
 
     <script>
         function toggleAccordion(btn) {
