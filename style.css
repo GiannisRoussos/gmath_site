@@ -34,11 +34,19 @@ body {
     padding: 0 20px;
 }
 
+/* Βοηθητικές Κλάσεις (Utilities) */
 .italic { font-family: 'Playfair Display', serif; font-style: italic; }
-.text-center { text-center: center !important; }
+.text-center { text-align: center !important; }
 .shadow { box-shadow: var(--shadow-soft); }
 .bg-light { background-color: var(--bg-white); }
 .section { padding: 80px 0; }
+.pt-32 { padding-top: 120px; }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.gap-3 { gap: 0.75rem; }
+.p-0 { padding: 0 !important; }
+.text-brand-purple { color: var(--brand-purple); }
 
 /* Navigation */
 .navbar {
@@ -386,6 +394,36 @@ input, textarea {
 }
 
 input:focus, textarea:focus { border-color: var(--brand-purple); }
+
+/* --- ΣΤΥΛ ΓΙΑ ΤΑ ΑΚΟΡΝΤΕΟΝ (ΣΗΜΕΙΩΣΕΙΣ) --- */
+.cat-title { font-size: 32px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; }
+
+.class-item { overflow: hidden; border: 1px solid var(--border-color); transition: all 0.3s; }
+.class-toggle { width: 100%; padding: 24px 30px; background: white; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: background 0.3s; }
+.class-toggle:hover { background: #fdfcff; }
+.class-toggle i.fa-plus { font-size: 14px; color: var(--brand-purple); transition: transform 0.3s; }
+.class-toggle.active { background: rgba(139, 92, 246, 0.02); border-bottom: 1px solid var(--border-color); }
+.class-toggle.active i.fa-plus { transform: rotate(45deg); }
+.class-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; padding: 0 30px; }
+/* Εδώ διορθώθηκε το ύψος σε 3000px για να μην κόβει το μενού */
+.class-toggle.active + .class-content { max-height: 3000px; padding: 25px 30px; }
+
+.subject-accordion { margin-bottom: 12px; }
+.accordion-toggle { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; background: #f8fafc; border: 1px solid #f1f5f9; border-radius: 12px; cursor: pointer; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); transition: all 0.3s; }
+.accordion-toggle:hover { border-color: var(--brand-purple-light); color: var(--brand-purple); }
+.accordion-toggle.active { background: #ffffff; color: var(--brand-purple); border-color: var(--brand-purple); border-radius: 12px 12px 0 0; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.05); }
+.accordion-toggle i { font-size: 10px; transition: transform 0.3s; }
+.accordion-toggle.active i { transform: rotate(180deg); }
+.accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: #ffffff; border-left: 1px solid var(--brand-purple); border-right: 1px solid var(--brand-purple); border-bottom: 1px solid var(--brand-purple); border-radius: 0 0 12px 12px; }
+/* Εδώ διορθώθηκε το ύψος σε 2000px */
+.accordion-toggle.active + .accordion-content { padding: 15px; max-height: 2000px; }
+
+.file-list { list-style: none; }
+.file-list li { display: flex; justify-content: space-between; padding: 10px 14px; background: #fdfcff; border-radius: 8px; margin-bottom: 8px; font-size: 13px; font-weight: 500; transition: 0.2s; border: 1px solid #f1f5f9; }
+.file-list li:hover { border-color: var(--brand-purple-light); background: #f5f3ff; }
+.chapter { color: var(--text-ink); }
+.dl-btn { color: var(--brand-purple); transition: 0.3s; padding-left: 10px; }
+.dl-btn:hover { color: var(--brand-purple-dark); transform: scale(1.1); }
 
 /* Footer */
 footer { padding: 60px 0; border-top: 1px solid var(--border-color); }
