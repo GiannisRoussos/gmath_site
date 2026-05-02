@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GMATH — Βήμα-Βήμα Λύση Εξίσωσης</title>
+    
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        .quiz-container { max-width: 700px; margin: 120px auto 60px; padding: 0 20px; }
+        .quiz-card { background: white; border-radius: 24px; padding: 40px; box-shadow: 0 10px 30px rgba(139, 92, 246, 0.1); position: relative; }
+        
+        .step-container { margin-bottom: 30px; padding: 20px; border: 2px dashed #e2e8f0; border-radius: 16px; transition: 0.4s; }
+        .step-container.active { border-color: var(--brand-purple-light); background: #fdfcff; }
+        .step-container.locked { opacity: 0.4; pointer-events: none; filter: grayscale(100%); }
+        .step-container.completed { border-color: #10b981; background: #ecfdf5; border-style: solid; }
+        
+        .step-title { font-weight: 700; color: var(--brand-purple); margin-bottom: 15px; font-size: 18px; display: flex; align-items: center; gap: 8px; }
+        .step-title i { font-size: 20px; }
+        
+        .equation-box { font-size: 22px; text-align: center; padding: 15px; background: #f8fafc; border-radius: 12px; margin-bottom: 25px; color: var(--text-ink); }
+        
+        .math-input { width: 60px; height: 40px; text-align: center; font-size: 18px; font-weight: 700; border: 2px solid #cbd5e1; border-radius: 8px; outline: none; transition: 0.3s; color: var(--text-ink); }
+        .math-input:focus { border-color: var(--brand-purple); box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2); }
+        .math-input.correct { border-color: #10b981; background: #ecfdf5; color: #065f46; }
+        .math-input.wrong { border-color: #ef4444; background: #fef2f2; color: #991b1b; }
+        
+        .check-btn { margin-top: 15px; padding: 10px 20px; background: var(--brand-purple); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+        .check-btn:hover { background: var(--brand-purple-dark); }
+        .check-btn:disabled { background: #cbd5e1; cursor: not-allowed; }
+        
+        .feedback-text { margin-top: 10px; font-weight: 600; font-size: 14px; min-height: 20px; }
+        .feedback-text.error { color: #ef4444; }
+        .feedback-text.success { color: #10b981; }
+
+        .back-btn { display: inline-flex; align-items: center; gap: 8px; color: var(--text-muted); text-decoration: none; font-weight: 600; margin-bottom: 20px; transition: 0.3s; }
+        .back-btn:hover { color: var(--brand-purple); }
+        
+        .math-line { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 15px; font-size: 18px; }
+    </style>
+</head>
+<body class="bg-paper">
+
+    <nav class="navbar">
+        <div class="container flex justify-between items-center h-full">
+            <a href="../../index.html" class="logo italic">GMATH</a>
+            <div class="nav-links">
+                <a href="../../index.html">Αρχική</a>
+                <a href="../../math.html" class="active">Μαθηματικά</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="quiz-container">
+        <a href="../../math.html" class="back-btn"><i class="fas fa-arrow-left"></i> Επιστροφή στις Σημειώσεις</a>
+        
+        <div class="quiz-card">
+            <h2 class="italic text-center mb-6" style="color: var(--brand-purple);">Διαδραστική Επίλυση</h2>
+            <div class="equation-box">
+                Λύσε την εξίσωση: &nbsp; \( x^2 - 5x + 6 = 0 \)
+            </div>
+
+            <!-- ΒΗΜΑ 1: Συντελεστές -->
+            <div class="step-container active" id="step1">
+                <div class="step-title"><i class="fas fa-search"></i> Βήμα 1: Εύρεση Συντελεστών</div>
+                <p class="text-muted mb-4">Εντόπισε τα \( \alpha, \beta, \gamma \) από την εξίσωση της μορφής \( \alpha x^2 + \beta x + \gamma = 0 \).</p>
+                
+                <div class="math-line">
+                    \( \alpha = \) <input type="text" class="math-input" id="val-a" autocomplete="off"> ,
+                    \( \beta = \) <input type="text" class="math-input" id="val-b" autocomplete="off"> ,
+                    \( \gamma = \) <input type="text" class="math-input" id="val-c" autocomplete="off">
+                </div>
+                
+                <button class="check-btn" onclick="checkStep1()" id="btn-step1">Έλεγχος Βήματος 1</button>
+                <div class="feedback-text" id="fb-step1"></div>
+            </div>
+
+            <!-- ΒΗΜΑ 2: Διακρίνουσα -->
+            <div class="step-container locked" id="step2">
+                <div class="step-title"><i class="fas fa-calculator"></i> Βήμα 2: Υπολογισμός Διακρίνουσας</div>
+                <p class="text-muted mb-4">Χρησιμοποίησε τον τύπο \( \Delta = \beta^2 - 4\alpha\gamma \).</p>
+                
+                <div class="math-line">
+                    \( \Delta = ( \) <input type="text" class="math-input" id="val-d1" placeholder="β"> \( )^2 - 4 \cdot \) 
+                    <input type="text" class="math-input" id="val-d2" placeholder="α"> \( \cdot \) 
+                    <input type="text" class="math-input" id="val-d3" placeholder="γ">
+                </div>
+                <div class="math-line">
+                    Άρα, το τελικό αποτέλεσμα είναι: \( \Delta = \) <input type="text" class="math-input" id="val-delta">
+                </div>
+                
+                <button class="check-btn" onclick="checkStep2()" id="btn-step2" disabled>Έλεγχος Βήματος 2</button>
+                <div class="feedback-text" id="fb-step2"></div>
+            </div>
+
+            <!-- ΒΗΜΑ 3: Ρίζες -->
+            <div class="step-container locked" id="step3">
+                <div class="step-title"><i class="fas fa-check-double"></i> Βήμα 3: Εύρεση Ριζών</div>
+                <p class="text-muted mb-4">Αφού \( \Delta > 0 \), έχουμε 2 άνισες ρίζες. Υπολόγισέ τες!</p>
+                
+                <div class="math-line">
+                    \( x_1 = \) <input type="text" class="math-input" id="val-x1">  και 
+                    \( x_2 = \) <input type="text" class="math-input" id="val-x2">
+                </div>
+                
+                <button class="check-btn" onclick="checkStep3()" id="btn-step3" disabled>Ολοκλήρωση Λύσης</button>
+                <div class="feedback-text" id="fb-step3"></div>
+            </div>
+            
+            <!-- Μήνυμα Επιτυχίας -->
+            <div id="success-message" style="display: none; text-align: center; margin-top: 20px;">
+                <i class="fas fa-trophy text-yellow-500 mb-2" style="font-size: 40px;"></i>
+                <h3 style="color: #10b981;">Μπράβο! Λύσατε την εξίσωση σωστά!</h3>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Βοηθητική συνάρτηση για έλεγχο κουτιών
+        function validateInput(id, expectedValue) {
+            const el = document.getElementById(id);
+            const val = el.value.trim();
+            el.classList.remove('correct', 'wrong');
+            if (val === expectedValue) {
+                el.classList.add('correct');
+                return true;
+            } else {
+                el.classList.add('wrong');
+                return false;
+            }
+        }
+
+        function checkStep1() {
+            const aOk = validateInput('val-a', '1');
+            const bOk = validateInput('val-b', '-5');
+            const cOk = validateInput('val-c', '6');
+            
+            const fb = document.getElementById('fb-step1');
+            if (aOk && bOk && cOk) {
+                fb.textContent = "✅ Άριστα! Βρήκες τους συντελεστές. Προχώρα στο Βήμα 2.";
+                fb.className = "feedback-text success";
+                document.getElementById('step1').classList.replace('active', 'completed');
+                document.getElementById('btn-step1').style.display = 'none';
+                
+                // Ξεκλείδωμα Βήματος 2
+                document.getElementById('step2').classList.replace('locked', 'active');
+                document.getElementById('btn-step2').disabled = false;
+            } else {
+                fb.textContent = "❌ Κάπου υπάρχει λάθος. Πρόσεξε τα πρόσημα!";
+                fb.className = "feedback-text error";
+            }
+        }
+
+        function checkStep2() {
+            const d1Ok = validateInput('val-d1', '-5');
+            const d2Ok = validateInput('val-d2', '1');
+            const d3Ok = validateInput('val-d3', '6');
+            const deltaOk = validateInput('val-delta', '1'); // (-5)^2 - 4(1)(6) = 25 - 24 = 1
+            
+            const fb = document.getElementById('fb-step2');
+            if (d1Ok && d2Ok && d3Ok && deltaOk) {
+                fb.textContent = "✅ Σωστά! Η διακρίνουσα είναι Δ = 1. Προχώρα στις ρίζες.";
+                fb.className = "feedback-text success";
+                document.getElementById('step2').classList.replace('active', 'completed');
+                document.getElementById('btn-step2').style.display = 'none';
+                
+                // Ξεκλείδωμα Βήματος 3
+                document.getElementById('step3').classList.replace('locked', 'active');
+                document.getElementById('btn-step3').disabled = false;
+            } else {
+                fb.textContent = "❌ Ξαναδές τις πράξεις σου. Μήπως ξέχασες ότι (-5)² = 25;";
+                fb.className = "feedback-text error";
+            }
+        }
+
+        function checkStep3() {
+            const x1El = document.getElementById('val-x1');
+            const x2El = document.getElementById('val-x2');
+            const x1 = x1El.value.trim();
+            const x2 = x2El.value.trim();
+            
+            x1El.classList.remove('correct', 'wrong');
+            x2El.classList.remove('correct', 'wrong');
+            
+            // Δεχόμαστε και 3, 2 και 2, 3
+            if ((x1 === '3' && x2 === '2') || (x1 === '2' && x2 === '3')) {
+                x1El.classList.add('correct');
+                x2El.classList.add('correct');
+                
+                document.getElementById('step3').classList.replace('active', 'completed');
+                document.getElementById('btn-step3').style.display = 'none';
+                document.getElementById('fb-step3').textContent = "";
+                
+                // Εμφάνιση Μηνύματος Επιτυχίας
+                document.getElementById('success-message').style.display = 'block';
+            } else {
+                x1El.classList.add('wrong');
+                x2El.classList.add('wrong');
+                document.getElementById('fb-step3').textContent = "❌ Λάθος αποτέλεσμα. Ο τύπος είναι x = (-β ± √Δ) / 2α";
+                document.getElementById('fb-step3').className = "feedback-text error";
+            }
+        }
+    </script>
+</body>
+</html>
