@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GMATH — Βήμα-Βήμα Λύση Εξίσωσης</title>
+    <title>GMATH — Διακρίνουσα (Βήμα-Βήμα)</title>
     
     <link rel="stylesheet" href="../../style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -58,7 +58,7 @@
         <a href="../../math.html" class="back-btn"><i class="fas fa-arrow-left"></i> Επιστροφή στις Σημειώσεις</a>
         
         <div class="quiz-card">
-            <h2 class="italic text-center mb-6" style="color: var(--brand-purple);">Διαδραστική Επίλυση</h2>
+            <h2 class="italic text-center mb-6" style="color: var(--brand-purple);">Διακρίνουσα (Βήμα-Βήμα)</h2>
             <div class="equation-box">
                 Λύσε την εξίσωση: &nbsp; \( x^2 - 5x + 6 = 0 \)
             </div>
@@ -81,15 +81,10 @@
             <!-- ΒΗΜΑ 2: Διακρίνουσα -->
             <div class="step-container locked" id="step2">
                 <div class="step-title"><i class="fas fa-calculator"></i> Βήμα 2: Υπολογισμός Διακρίνουσας</div>
-                <p class="text-muted mb-4">Χρησιμοποίησε τον τύπο \( \Delta = \beta^2 - 4\alpha\gamma \).</p>
+                <p class="text-muted mb-4">Χρησιμοποίησε τον τύπο \( \Delta = \beta^2 - 4\alpha\gamma \) και υπολόγισε το αποτέλεσμα στο πρόχειρο.</p>
                 
-                <div class="math-line">
-                    \( \Delta = ( \) <input type="text" class="math-input" id="val-d1" placeholder="β"> \( )^2 - 4 \cdot \) 
-                    <input type="text" class="math-input" id="val-d2" placeholder="α"> \( \cdot \) 
-                    <input type="text" class="math-input" id="val-d3" placeholder="γ">
-                </div>
-                <div class="math-line">
-                    Άρα, το τελικό αποτέλεσμα είναι: \( \Delta = \) <input type="text" class="math-input" id="val-delta">
+                <div class="math-line" style="justify-content: center; margin-bottom: 25px;">
+                    Τελικό αποτέλεσμα: &nbsp; \( \Delta = \) <input type="text" class="math-input" id="val-delta" style="width: 80px;" autocomplete="off">
                 </div>
                 
                 <button class="check-btn" onclick="checkStep2()" id="btn-step2" disabled>Έλεγχος Βήματος 2</button>
@@ -102,8 +97,8 @@
                 <p class="text-muted mb-4">Αφού \( \Delta > 0 \), έχουμε 2 άνισες ρίζες. Υπολόγισέ τες!</p>
                 
                 <div class="math-line">
-                    \( x_1 = \) <input type="text" class="math-input" id="val-x1">  και 
-                    \( x_2 = \) <input type="text" class="math-input" id="val-x2">
+                    \( x_1 = \) <input type="text" class="math-input" id="val-x1" autocomplete="off">  και 
+                    \( x_2 = \) <input type="text" class="math-input" id="val-x2" autocomplete="off">
                 </div>
                 
                 <button class="check-btn" onclick="checkStep3()" id="btn-step3" disabled>Ολοκλήρωση Λύσης</button>
@@ -120,6 +115,12 @@
     </div>
 
     <script>
+        // --- Ήχοι Επιβεβαίωσης ---
+        const correctSound = new Audio('https://assets.mixkit.co/active_storage/sfx/951/951-preview.mp3');
+        const wrongSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2003/2003-preview.mp3');
+        correctSound.volume = 0.4;
+        wrongSound.volume = 0.3;
+
         // Βοηθητική συνάρτηση για έλεγχο κουτιών
         function validateInput(id, expectedValue) {
             const el = document.getElementById(id);
@@ -141,6 +142,7 @@
             
             const fb = document.getElementById('fb-step1');
             if (aOk && bOk && cOk) {
+                correctSound.play().catch(e => console.log(e)); // Παίζει ο ήχος επιτυχίας
                 fb.textContent = "✅ Άριστα! Βρήκες τους συντελεστές. Προχώρα στο Βήμα 2.";
                 fb.className = "feedback-text success";
                 document.getElementById('step1').classList.replace('active', 'completed');
@@ -150,19 +152,18 @@
                 document.getElementById('step2').classList.replace('locked', 'active');
                 document.getElementById('btn-step2').disabled = false;
             } else {
+                wrongSound.play().catch(e => console.log(e)); // Παίζει ο ήχος λάθους
                 fb.textContent = "❌ Κάπου υπάρχει λάθος. Πρόσεξε τα πρόσημα!";
                 fb.className = "feedback-text error";
             }
         }
 
         function checkStep2() {
-            const d1Ok = validateInput('val-d1', '-5');
-            const d2Ok = validateInput('val-d2', '1');
-            const d3Ok = validateInput('val-d3', '6');
-            const deltaOk = validateInput('val-delta', '1'); // (-5)^2 - 4(1)(6) = 25 - 24 = 1
+            const deltaOk = validateInput('val-delta', '1'); 
             
             const fb = document.getElementById('fb-step2');
-            if (d1Ok && d2Ok && d3Ok && deltaOk) {
+            if (deltaOk) {
+                correctSound.play().catch(e => console.log(e)); // Παίζει ο ήχος επιτυχίας
                 fb.textContent = "✅ Σωστά! Η διακρίνουσα είναι Δ = 1. Προχώρα στις ρίζες.";
                 fb.className = "feedback-text success";
                 document.getElementById('step2').classList.replace('active', 'completed');
@@ -172,7 +173,8 @@
                 document.getElementById('step3').classList.replace('locked', 'active');
                 document.getElementById('btn-step3').disabled = false;
             } else {
-                fb.textContent = "❌ Ξαναδές τις πράξεις σου. Μήπως ξέχασες ότι (-5)² = 25;";
+                wrongSound.play().catch(e => console.log(e)); // Παίζει ο ήχος λάθους
+                fb.textContent = "❌ Λάθος αποτέλεσμα. Ξαναδές τις πράξεις σου (υπενθύμιση: (-5)² = 25).";
                 fb.className = "feedback-text error";
             }
         }
@@ -188,6 +190,7 @@
             
             // Δεχόμαστε και 3, 2 και 2, 3
             if ((x1 === '3' && x2 === '2') || (x1 === '2' && x2 === '3')) {
+                correctSound.play().catch(e => console.log(e)); // Παίζει ο ήχος επιτυχίας
                 x1El.classList.add('correct');
                 x2El.classList.add('correct');
                 
@@ -198,6 +201,7 @@
                 // Εμφάνιση Μηνύματος Επιτυχίας
                 document.getElementById('success-message').style.display = 'block';
             } else {
+                wrongSound.play().catch(e => console.log(e)); // Παίζει ο ήχος λάθους
                 x1El.classList.add('wrong');
                 x2El.classList.add('wrong');
                 document.getElementById('fb-step3').textContent = "❌ Λάθος αποτέλεσμα. Ο τύπος είναι x = (-β ± √Δ) / 2α";
