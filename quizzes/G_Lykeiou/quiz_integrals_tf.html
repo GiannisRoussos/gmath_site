@@ -7,7 +7,6 @@
     
     <link rel="stylesheet" href="../../style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <!--  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>  -->
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <style>
@@ -19,7 +18,7 @@
         .options { display: flex; gap: 30px; }
         .option-label { display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 600; padding: 8px 16px; background: white; border: 1px solid #e2e8f0; border-radius: 8px; transition: 0.2s; }
         .option-label:hover { border-color: var(--brand-purple); color: var(--brand-purple); }
-        input[type="radio"] { accent-color: var(--brand-purple); transform: scale(1.2); }
+        input[type="radio"] { accent-color: var(--brand-purple); transform: scale(1.2); cursor: pointer; }
         .submit-btn { background: var(--brand-purple); color: white; border: none; padding: 15px; border-radius: 12px; font-weight: bold; cursor: pointer; width: 100%; font-size: 1.1rem; margin-top: 20px; transition: 0.3s; }
         .submit-btn:hover { background: #7c3aed; transform: translateY(-2px); }
         .result-box { display: none; margin-top: 25px; padding: 20px; border-radius: 12px; text-align: center; font-weight: bold; font-size: 1.2rem; }
@@ -61,7 +60,7 @@
                     <label class="option-label"><input type="radio" name="q1" value="Σ"> Σωστό</label>
                     <label class="option-label"><input type="radio" name="q1" value="Λ"> Λάθος</label>
                 </div>
-                <div class="explanation" id="exp1"><strong>Αιτιολόγηση:</strong> Η παράγουσα μιας συνάρτησης είναι συνάρτηση (ή οικογένεια συναρτήσεων \ F(x)+c \), ενώ το <em>ορισμένο ολοκλήρωμα</em> είναι αριθμός.</div>
+                <div class="explanation" id="exp1"><strong>Αιτιολόγηση:</strong> Η παράγουσα μιας συνάρτησης είναι συνάρτηση (ή οικογένεια συναρτήσεων \(F(x)+c\)), ενώ το <em>ορισμένο ολοκλήρωμα</em> είναι αριθμός.</div>
             </div>
 
             <div class="question-card" id="card2">
@@ -125,6 +124,22 @@
     </div>
 
     <script>
+        // --- ΡΥΘΜΙΣΗ ΗΧΩΝ ---
+        const clickSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3');
+        clickSound.volume = 0.4;
+        
+        const finishSound = new Audio('https://assets.mixkit.co/active_storage/sfx/1435/1435-preview.mp3');
+        finishSound.volume = 0.5;
+
+        // Προσθήκη του ήχου κλικ σε όλα τα κουμπιά (radio buttons)
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                clickSound.currentTime = 0; // Μηδενισμός για να παίζει αμέσως αν πατήσει γρήγορα
+                clickSound.play().catch(e => console.log("Audio prevented:", e));
+            });
+        });
+
+        // --- ΛΟΓΙΚΗ QUIZ & ΧΡΟΝΟΜΕΤΡΟ ---
         let timeLeft = 15 * 60; 
         const timerEl = document.getElementById('timer');
         let hasSubmitted = false;
@@ -148,8 +163,13 @@
         const correctAnswers = { q1: 'Λ', q2: 'Σ', q3: 'Σ', q4: 'Σ', q5: 'Λ', q6: 'Σ', q7: 'Λ' };
 
         function checkAnswers() {
+            if (hasSubmitted) return;
             hasSubmitted = true;
             clearInterval(timerId); 
+            
+            // Παίζει ο ήχος ολοκλήρωσης
+            finishSound.play().catch(e => console.log("Audio prevented:", e));
+
             let score = 0;
             let total = 7;
             
@@ -192,7 +212,7 @@
                 message = `Το σκορ σου είναι ${score} / ${total}. <br><span style='font-size: 1rem; font-weight: normal; color: #475569;'>Διάβασε τις αιτιολογήσεις παραπάνω για να δεις τα λάθη σου.</span>`;
             }
             
-            // Εδώ προστίθεται το κουμπί για να κατεβάσουν το αρχείο PDF με τις λύσεις
+            // Το κουμπί για το PDF (Όπως ζήτησες να το αφήσουμε)
             resultBox.innerHTML = message + `<br><br><a href="../../pdfs/orient/G_Lykeiou/Test_Olokliromata_Apantiseis.pdf" target="_blank" class="pdf-btn"><i class="fas fa-file-pdf"></i> Κατέβασε τις Λύσεις (PDF)</a>`;
             
             let btn = document.getElementById('submitBtn');
