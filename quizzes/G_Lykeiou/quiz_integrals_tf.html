@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GMATH — Τεστ Ολοκληρώματα</title>
+    
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .quiz-container { max-width: 800px; margin: 120px auto 60px; padding: 30px; background: white; border-radius: 24px; box-shadow: 0 10px 30px rgba(139, 92, 246, 0.1); }
+        .quiz-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f1f5f9; padding-bottom: 15px; margin-bottom: 25px; }
+        .timer { font-size: 1.5rem; font-weight: bold; color: #ef4444; background: #fef2f2; padding: 8px 16px; border-radius: 12px; }
+        .question-card { background: #fdfcff; border: 2px solid #f1f5f9; padding: 20px; border-radius: 12px; margin-bottom: 15px; transition: 0.3s; }
+        .question-text { font-size: 1.1rem; margin-bottom: 15px; line-height: 1.6; }
+        .options { display: flex; gap: 30px; }
+        .option-label { display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 600; padding: 8px 16px; background: white; border: 1px solid #e2e8f0; border-radius: 8px; transition: 0.2s; }
+        .option-label:hover { border-color: var(--brand-purple); color: var(--brand-purple); }
+        input[type="radio"] { accent-color: var(--brand-purple); transform: scale(1.2); }
+        .submit-btn { background: var(--brand-purple); color: white; border: none; padding: 15px; border-radius: 12px; font-weight: bold; cursor: pointer; width: 100%; font-size: 1.1rem; margin-top: 20px; transition: 0.3s; }
+        .submit-btn:hover { background: #7c3aed; transform: translateY(-2px); }
+        .result-box { display: none; margin-top: 25px; padding: 20px; border-radius: 12px; text-align: center; font-weight: bold; font-size: 1.2rem; }
+        .back-btn { display: inline-flex; align-items: center; gap: 8px; color: var(--text-muted); text-decoration: none; font-weight: 600; margin-bottom: 20px; }
+        
+        /* Στυλ για τις επεξηγήσεις */
+        .explanation { display: none; margin-top: 15px; padding: 12px 15px; background: #f8fafc; border-left: 4px solid var(--brand-purple); font-size: 0.95rem; color: #334155; border-radius: 0 8px 8px 0; }
+        .pdf-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #475569; color: white; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-size: 1rem; margin-top: 20px; transition: 0.3s; }
+        .pdf-btn:hover { background: #334155; }
+    </style>
+</head>
+<body class="bg-paper">
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../../index.html" class="logo italic">GMATH</a>
+            <div class="nav-links">
+                <a href="../../index.html">Αρχική</a>
+                <a href="../../math.html" class="active">Μαθηματικά</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="quiz-container">
+        <a href="../../math.html" class="back-btn"><i class="fas fa-arrow-left"></i> Επιστροφή</a>
+        
+        <div class="quiz-header">
+            <div>
+                <h2 class="italic" style="color: var(--brand-purple);"><i class="fas fa-tasks"></i> Τεστ: Ολοκληρώματα</h2>
+                <p class="text-muted" style="margin-top: 5px;">Ερωτήσεις Σωστού / Λάθους</p>
+            </div>
+            <div class="timer" id="timer"><i class="fas fa-stopwatch"></i> 15:00</div>
+        </div>
+
+        <form id="quiz-form">
+            <div class="question-card" id="card1">
+                <div class="question-text"><strong>1. α)</strong> Η παράγουσα μιας συνάρτησης f σε ένα διάστημα Δ είναι αριθμός.</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q1" value="Σ"> Σωστό</label>
+                    <label class="option-label"><input type="radio" name="q1" value="Λ"> Λάθος</label>
+                </div>
+                <div class="explanation" id="exp1"><strong>Αιτιολόγηση:</strong> Η παράγουσα μιας συνάρτησης είναι συνάρτηση (ή οικογένεια συναρτήσεων $F(x)+c$), ενώ το <em>ορισμένο ολοκλήρωμα</em> είναι αριθμός.</div>
+            </div>
+
+            <div class="question-card" id="card2">
+                <div class="question-text"><strong>2. β)</strong> Αν \( F(x) = f(x) \) και \( f(0) = 1 \), όπου F είναι αρχική της f, τότε υποχρεωτικά \( f(x) = e^x \).</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q2" value="Σ"> Σωστό</label>
+                    <label class="option-label"><input type="radio" name="q2" value="Λ"> Λάθος</label>
+                </div>
+                <div class="explanation" id="exp2"><strong>Αιτιολόγηση:</strong> Ισχύει \( F'(x) = f(x) \). Αφού \( F(x) = f(x) \), έχουμε \( f'(x) = f(x) \), άρα \( f(x) = c \cdot e^x \). Με \( f(0)=1 \) προκύπτει \( c=1 \), άρα \( f(x) = e^x \).</div>
+            </div>
+
+            <div class="question-card" id="card3">
+                <div class="question-text"><strong>3. γ)</strong> Κάθε συνεχής συνάρτηση f σε ένα διάστημα [α, β] είναι ολοκληρώσιμη στο [α, β].</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q3" value="Σ"> Σωστό</label>
+                    <label class="option-label"><input type="radio" name="q3" value="Λ"> Λάθος</label>
+                </div>
+                <div class="explanation" id="exp3"><strong>Αιτιολόγηση:</strong> Σωστό. Αποτελεί βασικό θεώρημα του ολοκληρωτικού λογισμού.</div>
+            </div>
+
+            <div class="question-card" id="card4">
+                <div class="question-text"><strong>4. δ)</strong> Αν \( f(x) \ge g(x) \) για κάθε \( x \in [\alpha, \beta] \), τότε \( \int_{\alpha}^{\beta} f(x)dx \ge \int_{\alpha}^{\beta} g(x)dx \).</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q4" value="Σ"> Σωστό</label>
+                    <label class="option-label"><input type="radio" name="q4" value="Λ"> Λάθος</label>
+                </div>
+                <div class="explanation" id="exp4"><strong>Αιτιολόγηση:</strong> Προκύπτει από την ιδιότητα ότι αν \( h(x) = f(x) - g(x) \ge 0 \), τότε και \( \int_{\alpha}^{\beta} h(x)dx \ge 0 \).</div>
+            </div>
+
+            <div class="question-card" id="card5">
+                <div class="question-text"><strong>5. ε)</strong> \( \int_{\alpha}^{\beta} \left( \int_{\alpha}^{x} 2du \right) dx = \beta^2 - \alpha^2 \).</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q5" value="Σ"> Σωστό</label>
+                    <label class="option-label"><input type="radio" name="q5" value="Λ"> Λάθος</label>
+                </div>
+                <div class="explanation" id="exp5"><strong>Αιτιολόγηση:</strong> Το εσωτερικό ολοκλήρωμα είναι \( 2(x-\alpha) \). Το εξωτερικό γίνεται \( \int_{\alpha}^{\beta} (2x - 2\alpha)dx = [x^2 - 2\alpha x]_{\alpha}^{\beta} = (\beta-\alpha)^2 \), το οποίο είναι διαφορετικό από το \( \beta^2 - \alpha^2 \).</div>
+            </div>
+
+            <div class="question-card" id="card6">
+                <div class="question-text"><strong>6. στ)</strong> \( \int_{\alpha+\gamma}^{\beta+\gamma} f(x-\gamma)dx = \int_{\alpha}^{\beta} f(x)dx \).</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q6" value="Σ"> Σωστό</label>
+                    <label class="option-label"><input type="radio" name="q6" value="Λ"> Λάθος</label>
+                </div>
+                <div class="explanation" id="exp6"><strong>Αιτιολόγηση:</strong> Προκύπτει άμεσα με την αλλαγή μεταβλητής \( u = x - \gamma \), οπότε \( du = dx \) και τα νέα άκρα είναι \( \alpha \) και \( \beta \).</div>
+            </div>
+
+            <div class="question-card" id="card7">
+                <div class="question-text"><strong>7. ζ)</strong> Αν F αρχική της f τότε: \( \int_{\alpha}^{\beta} f(x)dx = F(x) + c \).</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q7" value="Σ"> Σωστό</label>
+                    <label class="option-label"><input type="radio" name="q7" value="Λ"> Λάθος</label>
+                </div>
+                <div class="explanation" id="exp7"><strong>Αιτιολόγηση:</strong> Σύμφωνα με το Θεμελιώδες Θεώρημα Ολοκληρωτικού Λογισμού, ισχύει \( \int_{\alpha}^{\beta} f(x)dx = F(\beta) - F(\alpha) \), που είναι σταθερός αριθμός.</div>
+            </div>
+
+            <button type="button" class="submit-btn" id="submitBtn" onclick="checkAnswers()">Υποβολή Απαντήσεων</button>
+        </form>
+
+        <div id="result" class="result-box"></div>
+    </div>
+
+    <script>
+        let timeLeft = 15 * 60; 
+        const timerEl = document.getElementById('timer');
+        let hasSubmitted = false;
+        
+        let timerId = setInterval(() => {
+            if (timeLeft <= 0) {
+                clearInterval(timerId);
+                timerEl.innerHTML = "<i class='fas fa-exclamation-triangle'></i> 00:00";
+                if (!hasSubmitted) {
+                    alert("Ο χρόνος έληξε!");
+                    checkAnswers(); 
+                }
+            } else {
+                let m = Math.floor(timeLeft / 60);
+                let s = timeLeft % 60;
+                timerEl.innerHTML = "<i class='fas fa-stopwatch'></i> " + (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+                timeLeft--;
+            }
+        }, 1000);
+
+        const correctAnswers = { q1: 'Λ', q2: 'Σ', q3: 'Σ', q4: 'Σ', q5: 'Λ', q6: 'Σ', q7: 'Λ' };
+
+        function checkAnswers() {
+            hasSubmitted = true;
+            clearInterval(timerId); 
+            let score = 0;
+            let total = 7;
+            
+            for(let i=1; i<=total; i++) {
+                let qName = 'q' + i;
+                let selected = document.querySelector('input[name="'+qName+'"]:checked');
+                let card = document.getElementById('card' + i);
+                let exp = document.getElementById('exp' + i);
+                
+                let options = document.getElementsByName(qName);
+                options.forEach(opt => opt.disabled = true);
+                
+                exp.style.display = 'block'; 
+
+                if(selected) {
+                    if(selected.value === correctAnswers[qName]) {
+                        score++;
+                        card.style.borderColor = "#22c55e"; 
+                        card.style.backgroundColor = "#f0fdf4";
+                    } else {
+                        card.style.borderColor = "#ef4444"; 
+                        card.style.backgroundColor = "#fef2f2";
+                    }
+                } else {
+                    card.style.borderColor = "#f59e0b"; 
+                }
+            }
+
+            let resultBox = document.getElementById('result');
+            resultBox.style.display = 'block';
+            
+            let message = "";
+            if(score === total) {
+                resultBox.style.backgroundColor = '#dcfce7';
+                resultBox.style.color = '#166534';
+                message = `Άριστα! 🎉 Απάντησες σωστά και στις ${total} ερωτήσεις!`;
+            } else {
+                resultBox.style.backgroundColor = '#fee2e2';
+                resultBox.style.color = '#991b1b';
+                message = `Το σκορ σου είναι ${score} / ${total}. <br><span style='font-size: 1rem; font-weight: normal; color: #475569;'>Διάβασε τις αιτιολογήσεις παραπάνω για να δεις τα λάθη σου.</span>`;
+            }
+            
+            // Εδώ προστίθεται το κουμπί για να κατεβάσουν το αρχείο PDF με τις λύσεις
+            resultBox.innerHTML = message + `<br><br><a href="../../pdfs/orient/G_Lykeiou/Test_Olokliromata_Apantiseis.pdf" target="_blank" class="pdf-btn"><i class="fas fa-file-pdf"></i> Κατέβασε τις Λύσεις (PDF)</a>`;
+            
+            let btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.style.opacity = '0.5';
+            btn.style.cursor = 'default';
+        }
+    </script>
+</body>
+</html>
